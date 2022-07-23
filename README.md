@@ -7,16 +7,16 @@ This is a bare minimal template, which I personally use for developing a React w
 
 ## Backend
 
-Step 1: Install python environment. If you use poetry, then simply run:
+- Install python environment. If you use poetry, then simply run:
 
 ```sh
 cd backend
 poetry install
 ```
 
-- Step 2: Change the port number in `main.py` if you don't want to run it on the default port 5000.
+- Change the port number in `main.py` if you don't want to run it on the default port 5000.
 
-- Step 3: Start the development backend
+- Start the development backend
 
 ```sh
 poetry run python main.py
@@ -24,7 +24,7 @@ poetry run python main.py
 
 ## Frontend
 
-- Step 1: Install and start the frontend:
+- Install and start the frontend:
 
 ```sh
 cd frontend
@@ -33,7 +33,7 @@ rpm run dev
 ```
 A development webserver will start at `http://localhost:1234`. If you prefer another port, you can use the `PORT` environment variable. 
 
-- Step 2: Set the `API_URL` in `<project_folder>/frontend/config.js` that points to the backend address (and port).
+- Set the `API_URL` in `<project_folder>/frontend/config.js` that points to the backend address (and port).
 
 ## Cross-Origin Resource Sharing (CORS)
 
