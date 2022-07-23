@@ -19,8 +19,7 @@ poetry install
 - Start the development backend
 
 ```sh
-poetry shell
-./run_dev.sh
+poetry run ./run_dev.sh
 ```
 
 ## Frontend
