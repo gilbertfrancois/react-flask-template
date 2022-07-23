@@ -1,43 +1,28 @@
 import React from "react";
+import config from "./config";
 
 export default function App() {
-    URL_API = "http://85.195.220.234:42334/api/version";
+    const [backEndStatus, setBackEndStatus] = React.useState("offline");
 
-    const [backEndVersion, setBackEndVersion] = React.useState("0");
-
-    console.log(backEndVersion);
-
-    // React.useEffect(() => {
-    //     // Define inner function
-    //     async function getVersion() {
-    //         const response = await fetch(URL_API)
-    //         console.log(response)
-    //         const response_json = await response.json()
-    //         setBackEndVersion(response_json.data.version)
-    //         console.log("update")
-    //     }
-    //     // Run inner function
-    //     getVersion()
-    //     return () => {
-    //         // Destructor
-    //     }
-    // }, [])
+    const fetchBackEndStatus = async () => {
+        try {
+            const response = await fetch(config.API_URL + "/api/status", { mode: "cors" });
+            const data = await response.json();
+            if (data.success) {
+                setBackEndStatus(data.data.status);
+            }
+            console.log({ data });
+        } catch (e) {
+            setBackEndStatus("error");
+            console.log(e);
+        }
+    };
 
     React.useEffect(() => {
-        console.log(URL_API);
-        const version = fetch(URL_API)
-            .then((res) => {
-                return res.json();
-            })
-            .then((data) => {
-                return data.data.version;
-            })
-            .catch((err) => {
-                throw new Error(err);
-            });
-        setBackEndVersion(version);
+        fetchBackEndStatus();
+        // Destructor function
         return () => {};
     }, []);
 
-    return <div className="container">Backend version: {backEndVersion}</div>;
+    return <div className="container">Backend status: {backEndStatus}</div>;
 }
