@@ -14,12 +14,13 @@ cd backend
 poetry install
 ```
 
-- Change the port number in `main.py` if you don't want to run it on the default port 5000.
+- Change the settings in `run_dev.sh` if you don't like the defaults.
 
 - Start the development backend
 
 ```sh
-poetry run python main.py
+poetry shell
+./run_dev.sh
 ```
 
 ## Frontend
